@@ -10,6 +10,7 @@ import Input from './Input'
 import Select from './Select'
 import Card from './Card'
 import Spinner from './Spinner'
+import Colors from './Colors'
 import AuthLayout from './AuthLayout'
 import BudgetCard from './BudgetCard'
 import SuccessfulAlert from './alerts/SucccessfulAlert'
@@ -21,6 +22,7 @@ export{
     Input,
     Select,
     Card,
+    Colors,
     Spinner,
     BudgetCard,
     LogoutBtn,

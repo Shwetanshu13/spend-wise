@@ -8,6 +8,7 @@ import {
   AddAlert,
   Heading,
   Spinner,
+  Colors,
 } from "../components";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
@@ -36,19 +37,20 @@ const Transactions = () => {
   if (!loading) {
     return (
       <div className="px-40">
-          <div className="my-16">
-            {alert === 1 && (
+        <Colors />
+        <div className="my-16">
+          {alert === 1 && (
             <AddAlert text="Transaction added/updated successfully" />
-            )}
-            {alert === 2 && (
-              <SuccessfulAlert text="Transaction deleted successfully" />
-            )}
-            {alert === 3 && (
-              <ErrorAlert text="Some error occured ...... Try again later !!!" />
-            )}
-          </div>
+          )}
+          {alert === 2 && (
+            <SuccessfulAlert text="Transaction deleted successfully" />
+          )}
+          {alert === 3 && (
+            <ErrorAlert text="Some error occured ...... Try again later !!!" />
+          )}
+        </div>
         <div>
-          <Heading title='All Transactions' />
+          <Heading title="All Transactions" />
           <div className="p-5 m-5">
             <ul>
               {transactions.map(
@@ -70,7 +72,7 @@ const Transactions = () => {
           </div>
         </div>
         <div>
-          <Heading title='Income' />
+          <Heading title="Income" />
           <div className="p-5 m-5">
             <ul>
               {transactions.map(
@@ -92,7 +94,7 @@ const Transactions = () => {
           </div>
         </div>
         <div>
-          <Heading title='Expense' />
+          <Heading title="Expense" />
           <div className="p-5 m-5">
             <ul>
               {transactions.map(
@@ -114,7 +116,7 @@ const Transactions = () => {
           </div>
         </div>
         <div>
-          <Heading title='Loan' />
+          <Heading title="Loan" />
           <div className="p-5 m-5">
             <ul>
               {transactions.map(
@@ -136,7 +138,7 @@ const Transactions = () => {
           </div>
         </div>
         <div>
-          <Heading title='Investment' />
+          <Heading title="Investment" />
           <div className="p-5 m-5">
             <ul>
               {transactions.map(

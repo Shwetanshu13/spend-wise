@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import service from "../appwrite/config";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { BudgetCard, Spinner } from "../components";
+import { BudgetCard, Colors, Spinner } from "../components";
 import GuestPage from "./GuestPage";
 
 const Home = () => {
@@ -40,6 +40,7 @@ const Home = () => {
   } else {
     return (
       <div className="home mt-14 p-5">
+        <Colors />
         <div className="welcome flex flex-col justify-center p-3">
           <h1 className="font-semibold text-2xl m-auto">Hello, {user.name.toUpperCase()} !</h1>
           <h1 className="text-lg m-auto">Welcome to 'Spend Wise'! Your daily money tracker to manage your wealth more efficiently.</h1>
