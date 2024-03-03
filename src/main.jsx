@@ -13,6 +13,7 @@ import Transactions from './pages/Transactions'
 import AddTransaction from './pages/AddTransaction'
 import EditTransaction from './pages/EditTransaction'
 import Finance from './pages/Finance.jsx'
+import NotFound from './pages/NotFound.jsx'
 
 
 const router = createBrowserRouter([
@@ -71,7 +72,15 @@ const router = createBrowserRouter([
             <EditTransaction />
           </AuthLayout>
         )
-      }
+      },
+      {
+        path: '*',
+        element: (
+          <AuthLayout authentication={false}>
+            <NotFound />
+          </AuthLayout>
+        )
+      },
     ],
   }
 ])
