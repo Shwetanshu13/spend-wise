@@ -24,37 +24,54 @@ const Home = () => {
     const investment = await service.sumInvestment(id);
     setTotalIncome(income);
     setTotalExpense(expense);
-    setTotalLoan(loan)
+    setTotalLoan(loan);
     setTotalInvestment(investment);
     setLoading(false);
-  }
+  };
 
   useEffect(() => {
-    sumIncome(user.$id)
+    sumIncome(user.$id);
   }, [user]);
 
   if (loading) {
-    return (
-      <Spinner />
-    ); 
+    return <Spinner />;
   } else {
     return (
       <div className="home mt-14 p-5">
         <Colors />
         <div className="welcome flex flex-col justify-center p-3">
-          <h1 className="font-semibold text-2xl m-auto">Hello, {user.name.toUpperCase()} !</h1>
-          <h1 className="text-lg m-auto">Welcome to 'Spend Wise'! Your daily money tracker to manage your wealth more efficiently.</h1>
+          <h1 className="font-semibold text-2xl m-auto">
+            Hello, {user.name.toUpperCase()} !
+          </h1>
+          <h1 className="text-lg m-auto">
+            Welcome to 'Spend Wise'! Your daily money tracker to manage your
+            wealth more efficiently.
+          </h1>
         </div>
         <div className="finance mx-10 my-7">
           <h2 className="text-xl font-semibold">
             Here is a summary of your finances
           </h2>
         </div>
-        <div className="cards grid grid-rows-2 grid-flow-col gap-10 place-items-center">
-          <BudgetCard flow='Income' amount={totalIncome} colour='green' />
-          <BudgetCard flow='Expense' amount={totalExpense} colour='red' />
-          <BudgetCard flow='Loan' amount={totalLoan} colour='orange' />
-          <BudgetCard flow='Investment' amount={totalInvestment} colour='blue'/>
+        <div className="cards grid grid-cols-2 grid-flow-row gap-10 place-items-center">
+          <BudgetCard
+            text="Current Balance"
+            amount={totalIncome - totalExpense - totalInvestment + totalLoan}
+            colour="green"
+          />
+          <BudgetCard
+            text="Balance after rebalancing Investments and Loans"
+            amount={totalIncome - totalExpense - totalLoan}
+            colour="green"
+          />
+          <BudgetCard text="Income" amount={totalIncome} colour="green" />
+          <BudgetCard text="Expense" amount={totalExpense} colour="red" />
+          <BudgetCard text="Loan" amount={totalLoan} colour="orange" />
+          <BudgetCard
+            text="Investment"
+            amount={totalInvestment}
+            colour="blue"
+          />
         </div>
       </div>
     );
