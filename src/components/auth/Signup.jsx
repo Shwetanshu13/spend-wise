@@ -22,6 +22,7 @@ const Signup = () => {
           dispatch(storeLogin(user));
         }
         navigate("/");
+        window.location.reload(false)
       }
     } catch (error) {
       setError(error.message);
