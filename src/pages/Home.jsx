@@ -61,7 +61,7 @@ const Home = () => {
           />
           <BudgetCard
             text="Balance after rebalancing Investments and Loans"
-            amount={totalIncome - totalExpense - totalLoan}
+            amount={totalIncome - totalExpense - totalLoan + totalInvestment}
             colour="green"
           />
           <BudgetCard text="Income" amount={totalIncome} colour="green" />
