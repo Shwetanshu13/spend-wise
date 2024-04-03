@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { login as storeLogin } from "../../store/authSlice";
@@ -10,10 +10,13 @@ const Signup = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const { register, handleSubmit } = useForm();
+  const [isRegistering, setIsRegistering] = useState(false)
   const [error, setError] = useState("");
+  const [heading, setHeading] = useState("Sign Up")
 
   const signup = async (data) => {
     setError("");
+    setIsRegistering(true)
     try {
       const session = await authService.createAccount(data);
       if (session) {
@@ -27,12 +30,17 @@ const Signup = () => {
     } catch (error) {
       setError(error.message);
     }
+    setIsRegistering(false)
   };
+
+  useEffect(() => {
+    setHeading(isRegistering ? "Processing..." : "Sign Up")
+  }, [isRegistering])
 
   return (
     <div className="rounded-lg shadow-2xl bg-slate-200 p-5 sm:w-2/3 md:w-1/2 m-auto">
       <div className="heading flex justify-center">
-        <h1 className="font-semibold text-3xl my-7">Sign Up</h1>
+        <h1 className="font-semibold text-3xl my-7"> {heading} </h1>
       </div>
       <hr />
       <div className="form p-1 my-5">
@@ -78,8 +86,9 @@ const Signup = () => {
           />
 
           <Button
-            className="text-white bg-green-500 rounded-lg p-2 w-1/3 my-5 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-600 focus:ring-opacity-50"
+            className="text-white bg-green-500 rounded-lg p-2 w-1/3 my-5 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-600 focus:ring-opacity-50 "
             type="submit"
+            disabled={isRegistering}
           >
             Sign Up
           </Button>

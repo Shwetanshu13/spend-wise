@@ -56,12 +56,12 @@ const Home = () => {
         <div className="cards grid grid-cols-2 grid-flow-row gap-10 place-items-center">
           <BudgetCard
             text="Current Balance"
-            amount={totalIncome - totalExpense - totalInvestment + totalLoan}
+            amount={totalIncome - totalExpense}
             colour="green"
           />
           <BudgetCard
             text="Balance after rebalancing Investments and Loans"
-            amount={(totalIncome - totalExpense) + (totalInvestment - totalLoan)}
+            amount={totalIncome - totalExpense}
             colour="green"
           />
           <BudgetCard text="Income" amount={totalIncome} colour="green" />

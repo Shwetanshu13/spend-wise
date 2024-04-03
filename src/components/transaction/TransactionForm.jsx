@@ -21,16 +21,7 @@ const TransactionForm = ({post}) => {
     }
   }, [post]);
 
-  const { register, handleSubmit, reset} = useForm({
-    // defaultValues: async () =>{
-    //   return {
-    //     // title: post?.title || "",
-    //     // amount: post?.amount || "",
-    //     // note: post?.note || "",
-    //     // flow: post?.flow || "",
-    //   }
-    // },
-  });
+  const { register, handleSubmit, reset} = useForm();
 
   const submit = async (data) => {
     try {
