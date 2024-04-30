@@ -37,7 +37,7 @@ const Login = () => {
   }
 
   useEffect(() => {
-    setHeading(isLogginIn ? "Processing..." : "Sign Up")
+    setHeading(isLogginIn ? "Processing..." : "Login")
   }, [isLogginIn])
 
   return (
