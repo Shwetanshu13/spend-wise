@@ -12,7 +12,9 @@ const Login = () => {
   const dispatch = useDispatch()
   const { register, handleSubmit } = useForm()
   const [error, setError] = useState("")
+  const [isLogginIn, setIsLogginIn] = useState(false)
   const [user, setuser] = useState(null)
+  const [heading, setHeading] = useState("Login")
 
   const login = async (data) => {
     setError("")
@@ -33,10 +35,14 @@ const Login = () => {
     }
   }
 
+  useEffect(() => {
+    setHeading(isLogginIn ? "Processing..." : "Sign Up")
+  }, [isLogginIn])
+
   return (
     <div className='rounded-lg shadow-2xl bg-slate-200 p-5 sm:w-2/3 md:w-1/2 m-auto'>
       <div className="heading flex justify-center">
-        <h1 className='font-semibold text-3xl my-7'>Log In</h1>
+        <h1 className='font-semibold text-3xl my-7'>{heading}</h1>
       </div>
       <hr />
       <div className="form p-1 my-7">
@@ -70,7 +76,9 @@ const Login = () => {
 
           <Button
             className='text-white bg-blue-500 rounded-lg p-2 w-1/3 my-5 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-opacity-50'
-            type="submit">
+            type="submit"
+            disabled={isLogginIn}
+            >
             Login
           </Button>
           {error && <p className="text-red-500">{error}</p>}

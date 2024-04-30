@@ -25,6 +25,7 @@ const TransactionForm = ({post}) => {
 
   const submit = async (data) => {
     try {
+      console.log(data.amount, typeof data.amount)
       if (post) {
         console.log('update form data')
         const trans = await service.updateTransaction({
@@ -76,6 +77,7 @@ const TransactionForm = ({post}) => {
               placeholder="Amount"
               {...register("amount", {
                 required: true,
+                valueAsNumber: true,
               })}
             />
             <Input
